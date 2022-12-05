@@ -1,6 +1,7 @@
 Dir["./lib/*.rb"].sort.each { |f| require f }
 
 namespace :aoc do
+  # rake aoc:solve\[1,1\]
   task :solve, [:day, :part] do  |task, args|
     day_class = Object.const_get("Day#{args[:day]}")
     input_file = "data/day#{args[:day]}.txt"
@@ -14,7 +15,7 @@ namespace :aoc do
     puts "Took: #{time}s"
   end
 
-  # rake aoc:setup\[2\]
+  # rake aoc:setup\[1\]
   task :setup, [:day] do |task, args|
       day           = args[:day].to_i
       day_class     = "Day#{day}"
@@ -23,10 +24,10 @@ namespace :aoc do
       spec_file     = "spec/day_#{day}_spec.rb"
       lib_file      = "lib/day_#{day}.rb"
 
-      File.open(input_file, "w") { |f| f.write("") }
-      File.open(fixture_file, "w") { |f| f.write("") }
-      File.open(spec_file, "w") { |f| f.write(spec_template(day, day_class)) }
-      File.open(lib_file, "w") { |f| f.write(lib_template(day_class)) }
+      File.open(input_file, "w")    { |f| f.write("") }
+      File.open(fixture_file, "w")  { |f| f.write("") }
+      File.open(spec_file, "w")     { |f| f.write(spec_template(day, day_class)) }
+      File.open(lib_file, "w")      { |f| f.write(lib_template(day_class)) }
     end
 
     def spec_template(day, day_class)
