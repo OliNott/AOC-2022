@@ -4,21 +4,6 @@ class Day3 < AOC
 
   PRIORITY = ('a' .. 'z').to_a + ('A' .. 'Z').to_a
 
-  def in_groups(array, number)
-    group_size = array.size / number
-    leftovers = array.size % number
-
-    groups = []
-    start = 0
-    number.times do |index|
-      length = group_size + (leftovers > 0 && leftovers > index ? 1 : 0)
-      groups << array.slice(start, length)
-      start += length
-    end
-
-    groups
-  end
-
   def solve(part:)
     @data = lazy_load_data
 
@@ -33,9 +18,7 @@ class Day3 < AOC
   def solve_1
     total = 0
     @data.each do |bag|
-      grouped = bag.split('').each_slice(bag.size / 2).to_a
-      first = grouped[0]
-      second = grouped[1]
+      first, second = bag.split('').each_slice(bag.size / 2).to_a
 
       common = second & first
 

@@ -20,7 +20,6 @@ class Day4 < AOC
       section2 = (sections[1][0].to_i..sections[1][1].to_i).to_a
       total += 1 if (section1 - section2).empty? || (section2 - section1).empty?
     end
-    p "TOTAL : #{total}"
     total
   end
 
@@ -32,7 +31,6 @@ class Day4 < AOC
       section2 = (sections[1][0].to_i..sections[1][1].to_i).to_a
       total += 1 if (section1 & section2).any? || (section2 & section1).any?
     end
-    p "TOTAL : #{total}"
     total
   end
 end
