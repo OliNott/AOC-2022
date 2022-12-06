@@ -4,6 +4,6 @@ class AOC
   end
 
   def lazy_load_data
-    IO.foreach(@input_file).lazy
+    IO.foreach(@input_file).lazy.map(&:strip)
   end
 end
