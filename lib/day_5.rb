@@ -37,7 +37,8 @@ class Day5 < AOC
         end
       elsif line.include?('move')
         nb, from, to = line.scan(/\d+/).map(&:to_i)
-        moved = crates[from - 1].shift(nb).reverse
+        moved = crates[from - 1].shift(nb)          if crate_mover_version == 9000
+        moved = crates[from - 1].shift(nb).reverse  if crate_mover_version == 9001
         moved.each { |box| crates[to - 1].unshift(box) }
       end
     end
